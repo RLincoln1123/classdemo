@@ -16,8 +16,21 @@ code_stack = Stack()
 #Storing the postfix expression 
 postfix_code = "3 5 1 - * 2 +"
 
-#Split the postfix expression into seperate numbers and operators. 
-for character in postfix_code.split():
+#Split the postfix expression into seperate numbers and operators 
+for character in postfix_code.split(): #Start of for loop
+
+    #Check if current character is a number
+    if character.isdigit():
+        code_stack.push(int(character) #Coverted to int and pushed to the stack
+
+    #Check if current chatacter is a math operator
+    if character == '+' or character == '-' or character == '*' or character == '/':
+
+        #Remove the top two numbers from the stack
+        first_opperand = code_stack.pop() #Gather first opperand 
+        second_opperand = code_stack.pop()#Gather second opperand 
+
+    
 
 
 
