@@ -153,6 +153,54 @@ def main():
                 
                # End the game 
                return
+            print("\nChoose a stack: a,b, or c")
+
+            choice = input("Enter your choice").lower()
+
+            if choice not in names:
+
+                print("Invalid choice.Try again.")
+
+                #Restart the loop without removing a number in the queue 
+                #Invalid choice cant be used in the game 
+                continue 
+             #Find the selected stacks position in the stacks list
+             #A = index 0, B = index 1, C = index 2
+             index = names.index(choice)
+
+             #Check if the selected stack already contains three numbers (a full stack is 3 numbers)
+             if stacks[index].is_full():
+                 print("The stack is full. Choose another.")
+
+                 #Restart the loop without dequeing a number
+                 #User has to choose available stack 
+                 continue
+                 
+              #Remove the first number from the queue
+              #The game has to process queue numbers in first in first out order
+              number = game_queue.dequeue()
+
+              stacks[index].push(number)
+
+              print("\nYou placed", number, "into stack", choice)
+
+              #Check for matching pairs and triple numbers (games rules are triple matches removed)
+              check_matches(game_queue, stacks)
+
+              #Show the updated queue and stacks because the game needs to be updated and shown to the user every turn
+              show_game(game_queue, stacks)
+              #If the loop ends then the queue is empty
+              #The Player Won
+              print(You Win!!)
+              
+pydoc.writedoc('stacks_queue_game')
+if __name__ == "__main__":
+    
+    main()
+                
+
+            
+            
                     
     
     
